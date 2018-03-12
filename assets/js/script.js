@@ -4,9 +4,12 @@ document.addEventListener("DOMContentLoaded", init);
 
 function init() {
     let startTime = new Date().getTime();
-    console.log(getSum(sieve(2000000)));
+    let sum = getSum(sieve(2000000));
+    console.log(sum);
     let endTime = new Date().getTime();
-    console.log(endTime-startTime+"ms");
+    let time = endTime-startTime;
+    console.log(time+"ms");
+    showResult(sum,time);
 }
 
 function sieve(l) {
@@ -36,3 +39,9 @@ function getSum(array) {
     }
     return sum;
 }
+
+function showResult(sum,time) {
+    document.querySelector("section").innerHTML +=
+        "<p>The found sum of all primes less than 2'000'000 is "+sum+".<br/>This was found in "+time+"ms.</p>"
+}
+
